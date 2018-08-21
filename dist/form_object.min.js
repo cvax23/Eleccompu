@@ -1,0 +1,1 @@
+"use strict";$.fn.formObject=function(){var n={};return $.each($(this).serializeArray(),function(e,r){n[r.name]=r.value||""}),n};

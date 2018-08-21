@@ -1,0 +1,132 @@
+-gallery_images =["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg","photo6.jpg","photo7.jpg","photo8.jpg","photo9.jpg","photo10.jpg","photo11.jpg","photo12.jpg","photo13.jpg","photo14.jpg","photo15.jpg","photo16.jpg","photo17.jpg","photo18.jpg","photo19.jpg","photo20.jpg","photo21.jpg","photo22.jpg","photo23.jpg",]
+
+!!!5
+%html{class:"no-js", lang:"es"}
+ %head
+  %meta{charset:"utf-8"}
+  %title ELECCOMPU
+  %meta{name:"description", content:"Empresa dedicada a servirle"}
+  %link{rel:"stylesheet", href:"https://fonts.googleapis.com/css?family=Dancing+Script"}
+  %link{rel:"stylesheet", href:"https://fonts.googleapis.com/css?family=Graduate"}
+  %link{rel:"stylesheet", href:"css/normalize.css"}
+  %link{rel:"stylesheet", href:"css/bootstrap.css"}
+  %link{rel:"stylesheet", href:"css/flexboxgrid.min.css"}
+  %link{rel:"stylesheet", href:"css/style.css"}
+  %meta{name:"viewport", content:"width=device-width, initial-scale=1"}
+  %meta{:"data-name" => "image-counter", content:"#{gallery_images.size - 1 }"}
+  %script{src:"js/vendor/modernizr-2.8.3.min.js"}
+ %body
+  ="<!--[if lt IE 9]>"
+  %p{class:"browserupgrade"}
+   Estas usando un navegador
+   %strong desactualizado.
+   Por favor
+   %a{href:"http://browsehappy.com/"}
+    actualiza tu navegador
+   para una mejor experiencia
+  ="<![endif]-->"
+  .video-container
+   %video{autoplay:true,loop:true,width:"1280",height:"720",poster:"/videos/images/lamp.jpg"}
+    %source{src:"/videos/mp4/lamp.mp4",typ:"video/mp4"}
+    %source{src:"/videos/webm/lamp.webm",typ:"video/webm"}
+  .row.full-height.middle-xs.center-xs.relative.up#home
+   .col-xs-12
+    .box.white-text
+     %img{src:"/imgs/logo.png", width:300}
+     %h1.Graduate.title.no-margin Electronica y Computadoras
+     %p#is-open 
+      %i.glyphicon.glyphicon-time 
+      %span.text Abierto ahora
+   %nav.fixed.top.right.navigation.white-text#navigation
+    -menu =[{title:"Home",link:"#home"}, {title:"Servicios",link:"#Servicios"}, {title:"Galeria",link:"#gallery"}, {title:"Contacto",link:"#contact"},{title:"Como llegar",link:"#location"}]
+    %ul.list-inline
+     -menu.each do |item|
+      %li
+       %a.menu-link{href:item[:link]}=item[:title]
+   .absolute.black.large-padding.white-text.full-width#description 
+    .row.midlle-xs.center-xs
+     .col-xs-7.col-sm-6.white-text.medium
+      Honestidad y Compromiso Laboral
+     .col-xs.hidden#sticky-navigation
+      .box
+       %nav.text-right.navigation#responsive-nav
+        %i.glyphicon.glyphicon-menu-hamburger.white-text.subtitle.glyphicon-remove#menu-opener
+        %ul.list-inline
+         -menu.each do |item|
+          %li
+           %a.menu-link{href:item[:link]}=item[:title]
+  
+  .text-center.relative#Servicios
+   .absolute.white-text#menu-title
+    %h2.Graduate.tittle Productos y Servicios 
+   -menu_photos=[{name:"Cableado Estructurado",pricing:"", image:"Cableado"},{name:"Venta de Equipos TI",pricing:"", image:"equipos"},{name:"Soporte y Reparación de Equipos TI ",pricing:"", image:"soporte"}]
+   .row
+    -menu_photos.each do |photo|
+     .col-md-4.col-lg-4.col-sm-4.col-xs-12.food{style:"background-image:url(/imgs/tech/#{photo[:image]}-thumb.jpg)"}
+      .screen
+       .row.middle-xs.full-height
+        .col-xs-12.white-text
+         %h3.Graduate.subtitle= photo[:name]
+         %p.no-margin=photo[:pricing]
+
+  #gallery
+   .inner
+    -gallery_images.each do |image|
+     .image{style:"background-image:url(/imgs/food/#{image})"}
+  .container
+   .card.white.black-text.text-center.relative
+    %h3.medium.slim
+     %strong.Graduate.medium Electrónica y Computadoras          
+    %p
+     Es una empresa comprometida con la calidad de nuestros servicios y productos. Cuenta con más de 20 años en el mercado aportando con varias soluciones a problemas de índole tecnológico, soporte y venta de hardware, tratando con profesionales capacitados de amplia experiencia
+    %h3.small.slim 
+     %strong.Graduate.medium Misión:
+    %p
+     Ofrecer un servicio de calidad, con rapidez y en tiempo justo, satisfaciendo los requerimientos de nuestros clientes de la mejor forma posible  
+    %h3.small.slim
+     %strong.Graduate.medium Visión:
+    %p
+     Trascender dando servicio y soporte TI en la región. Generando una relación de confianza y compromiso con nuestros clientes a lo largo de la vida comercial laboral.
+    %h3.small.slim
+     %strong.Graduate.medium Dirección:
+    %p 
+     Alfonso Perez Pallares E12-214 y Acosta Soberon Sector: Conocoto - Valle de los Chillos - Av Colon y 9 de Octubre Ed. Plaza Colon 2 Sector: La Mariscal - Quito
+    %h3.small.slim
+     %strong.Graduate.medium Contactos:
+    %p
+     Teléfono: 02-2798377 Celular: 0998231104 Email:vreza@eleccompu.com 
+     .large-padding.medium.black.white-text.text-center
+      También puedes ingresar a este sitio sin conexión a internet 
+  .black.white-text.full-height#contact
+   .row.middle-xs.full-height
+    .col-xs-12
+    .col-xs-12
+     .box      
+      %p.text-center.medium#info-contacto Presiona enter para llenar el campo correspondiente y enviarnos un correo
+      %form{action:"https://formspree.io/jsrezam@gmail.com",method:"POST",id:"contact-form",class:"step-form"}
+       .row.center-xs
+        .col-xs-2.col-md-1.text-center
+         .box
+          -3.times do |i|
+           -if i == 0
+            .path-step.active
+           -else
+            .path-step
+           %br
+        .col-xs-5
+         .box
+          %fieldset.step.active
+           %input{type:"email",name:"email",placeholder:"Tu correo electrónico",class:"input",required:true}
+          %fieldset.step
+           %input{type:"text",name:"name",placeholder:"Tu nombre",class:"input",required:true}
+          %fieldset.step
+           %textarea{name:"body",placeholder:"Mensaje...",class:"input",required:true}
+ #location
+  #map
+  #message.black.large-padding.white-text.text-center.Graduate.medium
+   
+ %script{src:"https://code.jquery.com/jquery-3.2.1.min.js",integrity:"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=",crossorigin:"anonymous"}
+ %script
+  window.jQuery || document.write("<script src='/js/vendor/jquery-1.12.0.min.js'><\/script>")
+ %script{src:"https://maps.googleapis.com/maps/api/js?key=AIzaSyAAmB9lfaq8KP8eA4hysnxTNFBfBL9Bm6E"}
+ %script{src:"/dist/app.js"}
